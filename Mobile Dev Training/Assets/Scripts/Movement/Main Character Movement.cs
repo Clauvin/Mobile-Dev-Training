@@ -44,7 +44,8 @@ public class MainCharacterMovement : MonoBehaviour
     private void RunCharacter(float horizontalInput)
     {
         //move player
-        characterBody.AddForce(new Vector2(horizontalInput * moveSpeed * Time.deltaTime, 0));
+        Vector3 new_vector = new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0,0);
+        characterBody.AddForce(new_vector);
     }
 
     void FixedUpdate()
