@@ -45,14 +45,12 @@ public class MainCharacterMovement : MonoBehaviour
     {
         //move player
         Vector3 new_vector = new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0,0);
-        Debug.Log(new_vector);
         characterBody.AddForce(new_vector);
     }
 
     void FixedUpdate()
     {
         #if UNITY_EDITOR
-        Debug.Log("Go");
 		RunCharacter(Input.GetAxis("Horizontal"));
         #endif
     }
