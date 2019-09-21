@@ -206,16 +206,21 @@ void game_over(){
     vec3 color = vec3(1.0,0.0,0.0);
     float limit = 0.01;
     
-    float ceiling_limits = ceiling_function(st);
+    float ceiling_limits = ceiling_function(mouse_scaled);
     
-    float ground_limits = ground_function(st);
+    float ground_limits = ground_function(mouse_scaled);
     
-    if (((mouse_scaled.y >= ceiling_limits) ||
-        	(mouse_scaled.y <= ground_limits)) && (
-    		((st.x >= mouse_scaled.x - limit) && (st.x <= mouse_scaled.x + limit) &&
-        	(st.y >= mouse_scaled.y - limit) && (st.y <= mouse_scaled.y+ limit)))){
+    bool height_test = ((mouse_scaled.y >= ceiling_limits) ||
+        				(mouse_scaled.y <= ground_limits));
+    
+    bool mouse_position_test = (((st.x >= mouse_scaled.x - limit)
+                                 && (st.x <= mouse_scaled.x + limit)
+                                 && (st.y >= mouse_scaled.y - limit)
+                                 && (st.y <= mouse_scaled.y+ limit)));
+    
+    if (height_test){
         
-		gl_FragColor = vec4(color,1.0);
+		gl_FragColor = vec4(color,0.2);
         
     }
     
